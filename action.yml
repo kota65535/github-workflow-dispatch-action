@@ -1,0 +1,24 @@
+name: "GitHub Workflow Dispatcher"
+description: "Send workflow_dispatch event"
+branding:
+  icon: "send"
+  color: "green"
+inputs:
+  repository:
+    description: "Target repository"
+    required: false
+  workflow:
+    description: "Workflow ID or filename"
+    required: false
+  ref:
+    description: "Workflow ref"
+    required: false
+  inputs:
+    description: "Workflow inputs"
+    required: false
+  token:
+    description: "GitHub token"
+    required: false
+runs:
+  using: "node16"
+  main: "dist/index.js"
