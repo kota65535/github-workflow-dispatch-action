@@ -31,4 +31,4 @@ jobs:
         uses: ./
         with:
           workflow: do-something.yml
-          inputs: '{"foo": "1", "bar": "2" }'
+          inputs: '{"foo": "1", "bar": "2", "baz": "3" }'

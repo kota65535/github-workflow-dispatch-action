@@ -9,7 +9,9 @@ on:
       bar:
         type: string
         required: true
-
+      baz:
+        type: string
+        required: true
 
 jobs:
   show-context:
