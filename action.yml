@@ -9,6 +9,7 @@ inputs:
     default: ${{ github.repository }}
   workflow:
     description: "Workflow ID or filename"
+    required: true
   ref:
     description: "Workflow ref"
   inputs:
