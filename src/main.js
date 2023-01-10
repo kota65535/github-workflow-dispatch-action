@@ -21,21 +21,16 @@ const main = async () => {
   const inputsJson = core.getInput('inputs').trim();
   let ref = core.getInput('ref').trim();
   let githubToken = core.getInput('token').trim();
+  const defaultGithubToken = core.getInput("default-github-token");
 
   // if repository not given, use this repository
-  let owner, repo;
-  if (repository === '') {
-    owner = context.repo.owner;
-    repo = context.repo.repo;
-  } else {
-    [owner, repo] = repository.split('/');
+  let [owner, repo] = repository.split('/');
+
+  githubToken = githubToken || process.env.GITHUB_TOKEN || defaultGithubToken;
+  if (!githubToken) {
+    throw new Error("No GitHub token provided");
   }
 
-  // github token can be also given via env
-  githubToken = githubToken || process.env.GITHUB_TOKEN;
-  if (githubToken === '') {
-    throw new Error('Need to provide one of token or GITHUB_TOKEN environment variable');
-  }
 
   initOctokit(githubToken)
 

@@ -6,19 +6,19 @@ branding:
 inputs:
   repository:
     description: "Target repository"
-    required: false
+    default: ${{ github.repository }}
   workflow:
     description: "Workflow ID or filename"
-    required: false
   ref:
     description: "Workflow ref"
-    required: false
+    default: ${{ github.ref }}
   inputs:
     description: "Workflow inputs"
-    required: false
   token:
     description: "GitHub token"
-    required: false
+  default-token:
+    description: "Default GitHub token"
+    default: ${{ github.token }}
 runs:
   using: "node16"
   main: "dist/index.js"
