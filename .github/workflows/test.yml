@@ -32,4 +32,3 @@ jobs:
         with:
           workflow: do-something.yml
           inputs: '{"foo": "1", "bar": "2", "baz": "3" }'
-          ref: refs/pull/2/merge
