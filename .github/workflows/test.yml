@@ -38,3 +38,4 @@ jobs:
           repository: kota65535/github-workflow-dispatch-slack-action
           workflow: do-something.yml
           inputs: '{"foo":"1","bar":"2"}'
+          token: ${{ secrets.PERSONAL_TOKEN }}
