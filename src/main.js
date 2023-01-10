@@ -7,14 +7,6 @@ const initOctokit = (token) => {
   octokit = getOctokit(token);
 }
 
-const getDefaultBranch = async (owner, repo) => {
-  const res = await octokit.rest.repos.get({
-    owner,
-    repo
-  });
-  return res.data.default_branch;
-};
-
 const main = async () => {
   const repository = core.getInput('repository').trim();
   const workflow = core.getInput('workflow').trim();
@@ -32,11 +24,6 @@ const main = async () => {
   }
 
   initOctokit(githubToken)
-
-  // if ref not given, use the default branch
-  if (ref === '') {
-    ref = await getDefaultBranch(owner, repo);
-  }
 
   const inputs = JSON.parse(inputsJson)
 
