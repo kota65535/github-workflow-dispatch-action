@@ -1,6 +1,7 @@
 # github-workflow-dispatch-action
 
-GitHub Action for sending GitHub [workflow_dispatch](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch) event.
+GitHub Action for triggering GitHub [workflow_dispatch](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch) 
+event.
 
 ## Inputs
 

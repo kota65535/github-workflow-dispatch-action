@@ -27,8 +27,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Dispatch event
+      - name: Trigger a workflow of this repo
         uses: ./
         with:
+          workflow: do-something.yml
+          inputs: '{"foo":"1","bar":"2"}'
+      - name: Trigger a workflow of an another repo
+        uses: ./
+        with:
+          repository: kota65535/github-workflow-dispatch-slack-action
           workflow: do-something.yml
           inputs: '{"foo":"1","bar":"2"}'
