@@ -12,19 +12,24 @@ const main = async () => {
   const repository = core.getInput("repository");
   const workflow = core.getInput("workflow", { required: true });
   const inputsJson = core.getInput("inputs");
-  const ref = core.getInput("ref");
+  let ref = core.getInput("ref");
   let githubToken = core.getInput("token");
   const defaultGithubToken = core.getInput("default-token");
 
-  // if repository not given, use this repository
   const [owner, repo] = repository.split("/");
+
+  if (!ref) {
+    if (context.eventName === "pull_request") {
+      ref = context.payload.pull_request.head.ref;
+    } else {
+      ref = context.ref;
+    }
+  }
 
   githubToken = githubToken || process.env.GITHUB_TOKEN || defaultGithubToken;
   if (!githubToken) {
     throw new Error("No GitHub token provided");
   }
-
-  core.info(JSON.stringify(context));
 
   initOctokit(githubToken);
 
