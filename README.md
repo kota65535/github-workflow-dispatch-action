@@ -1,6 +1,7 @@
 # github-workflow-dispatch-action
 
-GitHub Action for triggering GitHub [workflow_dispatch](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch) 
+GitHub Action for triggering
+GitHub [workflow_dispatch](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch)
 event.
 
 ## Inputs
@@ -13,7 +14,6 @@ event.
 | `inputs`     | Input keys and values configured in the workflow file | No       | N/A                                                     |
 | `token`      | GitHub token                                          | No       | `${{ env.GITHUB_TOKEN }}` or<br/> `${{ github.token }}` |
 
-
 1. `ref` default value are determined by the `repository` input and the event type as follows:
 
 | `repository` value             | Event type         | `ref` default value                         |
@@ -22,21 +22,20 @@ event.
 | `${{ github.repository }}`     | Not `pull_request` | `${{ github.ref }}`                         |
 | Not `${{ github.repository }}` | *                  | Default branch of the repository            |
 
-
 ## Usage
 
 ```yaml
 
-  dispatch:
-    runs-on: ubuntu-latest
-    needs:
-      - plan
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Dispatch workflow
-        uses: kota65535/github-workflow-dispatch-action@v1
-        with:
-          workflow: do-something.yml
-          inputs: '{"foo":"1","bar":"2"}'
+dispatch:
+  runs-on: ubuntu-latest
+  needs:
+    - plan
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Dispatch workflow
+      uses: kota65535/github-workflow-dispatch-action@v1
+      with:
+        workflow: do-something.yml
+        inputs: '{"foo":"1","bar":"2"}'
 ```
