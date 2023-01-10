@@ -26,16 +26,16 @@ event.
 
 ```yaml
 
-dispatch:
-  runs-on: ubuntu-latest
-  needs:
-    - plan
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Dispatch workflow
-      uses: kota65535/github-workflow-dispatch-action@v1
-      with:
-        workflow: do-something.yml
-        inputs: '{"foo":"1","bar":"2"}'
+  my-job:
+    runs-on: ubuntu-latest
+    needs:
+      - plan
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Dispatch workflow
+        uses: kota65535/github-workflow-dispatch-action@v1
+        with:
+          workflow: do-something.yml
+          inputs: '{"foo":"1","bar":"2"}'
 ```
