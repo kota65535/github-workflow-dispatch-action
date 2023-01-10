@@ -33,7 +33,7 @@ event.
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Dispatch workflow
+      - name: Trigger the workflow
         uses: kota65535/github-workflow-dispatch-action@v1
         with:
           workflow: do-something.yml
