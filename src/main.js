@@ -1,5 +1,5 @@
 const core = require('@actions/core');
-const { context, getOctokit } = require('@actions/github');
+const { getOctokit } = require('@actions/github');
 
 let octokit
 
@@ -21,7 +21,7 @@ const main = async () => {
   const inputsJson = core.getInput('inputs').trim();
   let ref = core.getInput('ref').trim();
   let githubToken = core.getInput('token').trim();
-  const defaultGithubToken = core.getInput("default-github-token");
+  const defaultGithubToken = core.getInput("default-token");
 
   // if repository not given, use this repository
   let [owner, repo] = repository.split('/');
@@ -30,7 +30,6 @@ const main = async () => {
   if (!githubToken) {
     throw new Error("No GitHub token provided");
   }
-
 
   initOctokit(githubToken)
 

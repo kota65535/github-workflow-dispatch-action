@@ -9507,7 +9507,7 @@ function wrappy (fn, cb) {
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(2186);
-const { context, getOctokit } = __nccwpck_require__(5438);
+const { getOctokit } = __nccwpck_require__(5438);
 
 let octokit
 
@@ -9529,7 +9529,7 @@ const main = async () => {
   const inputsJson = core.getInput('inputs').trim();
   let ref = core.getInput('ref').trim();
   let githubToken = core.getInput('token').trim();
-  const defaultGithubToken = core.getInput("default-github-token");
+  const defaultGithubToken = core.getInput("default-token");
 
   // if repository not given, use this repository
   let [owner, repo] = repository.split('/');
@@ -9538,7 +9538,6 @@ const main = async () => {
   if (!githubToken) {
     throw new Error("No GitHub token provided");
   }
-
 
   initOctokit(githubToken)
 
