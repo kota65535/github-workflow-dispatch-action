@@ -10,7 +10,6 @@ on:
         type: string
         required: true
 
-
 jobs:
   show-context:
     runs-on: ubuntu-latest

@@ -31,5 +31,4 @@ jobs:
         uses: ./
         with:
           workflow: do-something.yml
-          inputs: '{"foo": "1", "bar": "2" }'
-          ref: format-lint
+          inputs: '{"foo":"1","bar":"2"}'
