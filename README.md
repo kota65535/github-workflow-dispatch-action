@@ -5,13 +5,23 @@ event.
 
 ## Inputs
 
-| Name         | Description                                           | Required | Default                                                                            |
-|--------------|-------------------------------------------------------|----------|------------------------------------------------------------------------------------|
-| `repository` | Owner and repository name                             | No       | `${{ github.repository }}`                                                         |
-| `workflow`   | Workflow ID or file name                              | Yes      | N/A                                                                                |
-| `ref`        | Git reference for the workflow                        | No       | On PR: `${{ github.event.pull_request.head.ref }}`<br/>Others: `${{ github.ref }}` |
-| `inputs`     | Input keys and values configured in the workflow file | No       | N/A                                                                                |
-| `token`      | GitHub token                                          | No       | `${{ env.GITHUB_TOKEN }}` or<br/> `${{ github.token }}`                            | 
+| Name         | Description                                           | Required | Default                                                 |
+|--------------|-------------------------------------------------------|----------|---------------------------------------------------------|
+| `repository` | Owner and repository name                             | No       | `${{ github.repository }}`                              |
+| `workflow`   | Workflow ID or file name                              | Yes      | N/A                                                     |
+| `ref`        | Git reference for the workflow                        | No       | See (*1)                                                |
+| `inputs`     | Input keys and values configured in the workflow file | No       | N/A                                                     |
+| `token`      | GitHub token                                          | No       | `${{ env.GITHUB_TOKEN }}` or<br/> `${{ github.token }}` |
+
+
+1. `ref` default value are determined by the `repository` input and the event type as follows:
+
+| `repository` value             | Event type         | `ref` default value                         |
+|--------------------------------|--------------------|---------------------------------------------|
+| `${{ github.repository }}`     | `pull_request`     | `${{ github.event.pull_request.head.ref }}` |
+| `${{ github.repository }}`     | Not `pull_request` | `${{ github.ref }}`                         |
+| Not `${{ github.repository }}` | *                  | Default branch of the repository            |
+
 
 ## Usage
 
