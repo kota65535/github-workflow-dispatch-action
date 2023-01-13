@@ -1,5 +1,5 @@
-name: "GitHub Workflow Dispatcher"
-description: "Send workflow_dispatch event"
+name: "Workflow Dispatch"
+description: "Trigger workflow_dispatch event"
 branding:
   icon: "send"
   color: "green"
